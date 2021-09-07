@@ -1,0 +1,7 @@
+{
+  "name": "tul-project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

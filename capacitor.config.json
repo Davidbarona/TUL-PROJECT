@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "tul-project",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
