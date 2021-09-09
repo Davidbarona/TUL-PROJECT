@@ -24,3 +24,51 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* google fonts */ 
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;500&display=swap');
+
+
+.tittle{
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+    font-size: 25px !important;
+    font-weight: bold !important;
+    color:#52B9A5 !important;
+}
+
+.subtittle{
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+.paragraph{
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+    font-size: 12px !important
+
+}   
+
+
+.titlePage{
+    background-color: #5ABAA1;
+    border-radius: 30px;
+    margin:10px; 
+}
+
+.buttonSendData{
+    margin:30px;
+}
+
+.div_button{
+    text-align: end;
+    margin:0px;
+}
+
+.img_product{
+    padding: 10px;
+    border: 1px solid #00000057;
+    margin: 10px;
+    width: 100%;
+    border-radius: 20px;
+}

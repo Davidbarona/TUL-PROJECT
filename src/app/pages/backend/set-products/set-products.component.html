@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitle"> Configura tu producto </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="div_button">
+    <ion-button (click)="newItem()" class="paragraph" color="dark">
+      nuevo
+    </ion-button>
+  </div>
+
+  <div *ngIf="enableNewProduct">
+    <ion-item>
+      <ion-buttons slot="end">
+        <ion-button (click)="enableNewProduct = false">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+        <ion-button (click)="guardarProducto()">
+          <ion-icon
+            color="primary"
+            slot="icon-only"
+            name="save-sharp"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <h3 class="subtitle p-3 text-center titlePage">
+      Ingresa datos del producto
+    </h3>
+
+    <ion-item>
+      <ion-label class="paragraph" position="floating">
+        Nombre producto:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="newProducts.name"
+        class="paragraph"
+        type="text"
+        inputmode="text"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="paragraph" position="floating"> Sku: </ion-label>
+      <ion-input
+        [(ngModel)]="newProducts.sku"
+        class="paragraph"
+        type="text"
+        inputmode="text"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="paragraph" position="floating">
+        Descripcion:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="newProducts.descripcion"
+        class="paragraph"
+        type="text"
+        inputmode="text"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="paragraph" type="number" position="numeric">
+        Precio:
+      </ion-label>
+      <ion-input
+        [(ngModel)]="newProducts.precio"
+        class="paragraph"
+        type="text"
+        inputmode="text"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="paragraph"> Foto: </ion-label>
+      <ion-buttons slot="end">
+        <ion-button>
+          <label for="file-upload">
+            <ion-icon slot="icon-only" name="images"></ion-icon>
+          </label>
+          <input
+            (change)="newImageUpload($event)"
+            id="file-upload"
+            style="display: none"
+            type="file"
+            accept="image/*"
+          />
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item>
+      <img class="img_product" [src]="newProducts.foto" />
+    </ion-item>
+  </div>
+
+  <ion-card>
+    <h3 class="subtitle p-3 text-center titlePage">
+      Productos</h3>
+    <ion-item *ngFor="let producto of productos">
+      <ion-label class="paragraph">{{ producto.name }}</ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="newProducts = producto; enableNewProduct = true">
+          <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
+        </ion-button>
+        <ion-button (click)="deleteProduct(producto)">
+          <ion-icon slot="icon-only" color="danger" name="trash-bin"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-card>
+</ion-content>
