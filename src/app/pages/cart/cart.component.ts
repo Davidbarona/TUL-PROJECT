@@ -91,5 +91,7 @@ export class CartComponent implements OnInit, OnDestroy {
       console.log('guardado con éxito')
       this.cartService.clearCar()
     })
+
+    
   }
 }
