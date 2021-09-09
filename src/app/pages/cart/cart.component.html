@@ -22,5 +22,26 @@
   <div *ngFor="let producto of pedido.productos">
     <app-caritem [producto]="producto"> </app-caritem>
   </div>
-
 </ion-content>
+
+
+<ion-footer>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class ="paragraph text-center" size="6" style="border-right: 1px solid #6c757d;">
+          Cantidad: {{cant}}
+      </ion-col>
+      <ion-col class="paragraph text-center" size="6">
+        Total: $ {{total}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="order()" expand="full" class="paragraph" style="color: #ffffff !important;">
+          Pedir
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-footer>

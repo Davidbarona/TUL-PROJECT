@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { Carrito, Cliente, Producto, ProductoCarrito } from '../models';
 import { AuthService } from './auth.service';
 import { FireStoreService } from './fire-store.service';
@@ -14,12 +14,16 @@ export class CartService {
   path = 'cart/';
   uid = '';
   cliente: Cliente;
+  cartSubscriber:Subscription;
+  clienteSubscriber:Subscription;
 
   constructor(
     public firebaseauthservice: AuthService,
     public firestorageservice: FireStoreService,
     public router: Router
   ) {
+
+    this.initCart()
     //Observable
     this.firebaseauthservice.stateAuth().subscribe((res) => {
       console.log(res);
@@ -32,7 +36,8 @@ export class CartService {
 
   loadCart() {
     const path = 'Cliente/' + this.uid + '/' + this.path;
-    this.firestorageservice
+    
+   this.cartSubscriber = this.firestorageservice
       .getProduct<ProductoCarrito>(path, this.uid)
       .subscribe((res) => {
         console.log(res);
@@ -71,6 +76,9 @@ export class CartService {
   }
 
   getCart(): Observable<ProductoCarrito> {
+    setTimeout(() => {
+      this.pedido$.next(this.pedido);
+    },100)
     return this.pedido$.asObservable();
   }
 
@@ -94,11 +102,12 @@ export class CartService {
       this.router.navigate(['profile']);
       return;
     }
+    this.pedido$.next(this.pedido);
     console.log('estamos en add ', this.pedido);
     const path = 'Cliente/' + this.uid + '/' + this.path;
     this.firestorageservice
       .createProduct(this.pedido, path, this.uid)
-      .then((res) => {
+      .then(() => {
         console.log('añadido con éxito');
       });
   }
@@ -130,5 +139,11 @@ export class CartService {
 
   generateOrder() {}
 
-  clearCarrito() {}
+  clearCar() {
+    this.initCart()
+    const path = 'Cliente/' + this.uid + '/' + this.path;
+    this.firestorageservice.deleteProduct(path,this.uid).then(()=>{
+      this.initCart()
+    })
+  }
 }
