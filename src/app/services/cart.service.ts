@@ -59,7 +59,7 @@ export class CartService {
       cart_id: '',
       productos: [],
       precioTotal: null,
-      estadoPedido: 'sending',
+      estadoPedido: 'enviado',
     };
     this.pedido$.next(this.pedido);
   }

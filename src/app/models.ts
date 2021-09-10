@@ -34,10 +34,7 @@ export interface ProductoCarrito{
   productos:Carrito[]
   precioTotal:number,
   estadoPedido:EstadoPedido,
-  
-
-
 }
 
 
-export type EstadoPedido = 'complete' | 'sending'
+export type EstadoPedido = 'completado' | 'enviado'

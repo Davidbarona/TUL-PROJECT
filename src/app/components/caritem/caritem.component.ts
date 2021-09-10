@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CaritemComponent implements OnInit {
   
   @Input() producto:Carrito
+  @Input() botones=true
 
   constructor(public cartservice:CartService) { }
 

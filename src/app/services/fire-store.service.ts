@@ -40,4 +40,12 @@ export class FireStoreService {
     return collection.valueChanges(path)
   }
 
+
+  //ctrae una colección en base a una busqueda
+  getColletcionQuery<tipo>(path:string,params:string,condition:any,query:string){
+    const collection = this.database.collection<tipo>(path,
+    ref=> ref.where(params, condition,query) )
+    return collection.valueChanges(path)
+  }
+
 }

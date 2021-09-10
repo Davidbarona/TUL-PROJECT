@@ -57,7 +57,7 @@ export class CartComponent implements OnInit, OnDestroy {
       cart_id: '',
       productos: [],
       precioTotal: null,
-      estadoPedido: 'sending',
+      estadoPedido: 'enviado',
     };
   }
 

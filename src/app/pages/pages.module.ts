@@ -7,11 +7,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 import { CartComponent } from './cart/cart.component';
+import { MispedidosComponent } from './mispedidos/mispedidos.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent,ProfileComponent,CartComponent],
+  declarations: [HomeComponent,ProfileComponent,CartComponent,MispedidosComponent],
   imports: [
     CommonModule,
     IonicModule,

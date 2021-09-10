@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="subtitle"> Mis pedidos </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon slot="icon-only" name="storefront-sharp"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/profile']">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment class ="mt-3" (ionChange)="selection($event)" value="nuevos">
+    <ion-segment-button value="nuevos">
+     <ion-label class="paragraph">Nuevos </ion-label> 
+    </ion-segment-button>
+    <ion-segment-button value="culminados">
+      <ion-label class="paragraph">Culminados </ion-label> 
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <ion-card *ngFor="let pedidos of order">
+    <ion-item>
+      <ion-label class="paragraph">
+         <p>
+           Estado:{{pedidos.estadoPedido}}
+         </p> 
+         <p>
+           Precio total:$ {{pedidos.precioTotal}}
+         </p>
+      </ion-label>
+    </ion-item>
+    <app-caritem *ngFor="let productos of pedidos.productos" [producto]="productos" [botones]="false"></app-caritem>
+  </ion-card>
+
+</ion-content>
